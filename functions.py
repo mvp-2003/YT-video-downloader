@@ -29,6 +29,10 @@ def first_check(entry_folder, entry_link, invalid_url_label):
     entry_folder.insert(0, folder)
     entry_folder.configure(state='disabled')
 
+def finalize(selected_link_value, selected_folder_value, entry_link, entry_folder):
+    selected_link_value.configure(text=entry_link.get())
+    selected_folder_value.configure(text=entry_folder.get())
+
 
 def download_video(url, path):
     try:
