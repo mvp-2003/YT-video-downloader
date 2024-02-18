@@ -8,7 +8,7 @@ def valid_url(url):
         return False
     
     parsed_url = urlparse(url)
-    if parsed_url.netloc not in ['www.youtube.com', 'youtu.be']:
+    if parsed_url.netloc not in ['www.youtube.com', 'youtu.be', 'www.youtu.be', 'youtube.com']:
         return False
     query = parse_qs(parsed_url.query)
     if 'v' not in query:
