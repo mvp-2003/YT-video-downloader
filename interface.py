@@ -1,5 +1,4 @@
 import customtkinter as ctk
-
 from functions import choose_folder
 
 app = ctk.CTk()
@@ -13,7 +12,7 @@ entry_folder = ctk.CTkEntry(app, placeholder_text="Choose the folder to download
 entry_folder.place(x=375, y=175)
 entry_folder.configure(state='disabled')
 
-select_button = ctk.CTkButton(app, text="Choose folder", width=80, height=40, command=lambda: choose_folder())
+select_button = ctk.CTkButton(app, text="Choose folder", width=80, height=40, command=lambda: choose_folder(entry_folder))
 select_button.place(x=1185, y=175)
 
 upload_button = ctk.CTkButton(app, text="Select", width=60, height=45)

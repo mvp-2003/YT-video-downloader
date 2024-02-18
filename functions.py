@@ -1,10 +1,8 @@
-from lib2to3.fixes import fix_has_key
 import validators
 from customtkinter import filedialog
 
-def choose_folder():
+def choose_folder(entry_folder):
     folder = filedialog.askdirectory()
-
-
-def check_url(url):
-    pass
+    entry_folder.configure(state='normal')
+    entry_folder.insert(0, folder)
+    entry_folder.configure(state='disabled')
