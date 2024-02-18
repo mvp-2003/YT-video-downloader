@@ -1,5 +1,8 @@
 import customtkinter as ctk
-from functions import choose_folder
+from functions import first_check
+
+ctk.set_default_color_theme("green")
+ctk.set_appearance_mode("dark")
 
 app = ctk.CTk()
 app.title("YT Video Downloader")
@@ -12,7 +15,10 @@ entry_folder = ctk.CTkEntry(app, placeholder_text="Choose the folder to download
 entry_folder.place(x=375, y=175)
 entry_folder.configure(state='disabled')
 
-select_button = ctk.CTkButton(app, text="Choose folder", width=80, height=40, command=lambda: choose_folder(entry_folder))
+invalid_url_label = ctk.CTkLabel(app, text="", fg_color="gray", font=("Arial", 16))
+invalid_url_label.place(x=1185, y=125)
+
+select_button = ctk.CTkButton(app, text="Choose folder", width=80, height=40, command=lambda: first_check(entry_folder, entry_link, invalid_url_label))
 select_button.place(x=1185, y=175)
 
 upload_button = ctk.CTkButton(app, text="Select", width=60, height=45)
