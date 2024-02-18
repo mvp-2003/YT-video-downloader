@@ -1,11 +1,22 @@
 import requests, validators
 from customtkinter import filedialog
+from urllib.parse import urlparse, parse_qs
 from pytube import YouTube
 
 def valid_url(url):
-    if validators.url(url) and YouTube(url):
-        return True
-    return False
+    if not validators.url(url):
+        return False
+    
+    parsed_url = urlparse(url)
+    if parsed_url.netloc not in ['www.youtube.com', 'youtu.be']:
+        return False
+    query = parse_qs(parsed_url.query)
+    if 'v' not in query:
+        return False
+    response = requests.get(url)
+    if response.status_code != 200:
+        return False
+    return True
     
 def first_check(entry_folder, entry_link, invalid_url_label):
     url = entry_link.get()
