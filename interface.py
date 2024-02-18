@@ -36,4 +36,7 @@ selected_link_value.place(x=375, y=300)
 selected_folder_value = ctk.CTkLabel(app, text="", fg_color="gray", font=("Arial", 14), height=30, width=800)
 selected_folder_value.place(x=375, y=350)
 
+download_button = ctk.CTkButton(app, text="Download", width=60, height=45, command=lambda: download_video(selected_link_value.cget("text"), selected_folder_value.cget("text")))
+download_button.place(x=775, y=400)
+
 app.mainloop()

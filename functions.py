@@ -33,11 +33,14 @@ def finalize(selected_link_value, selected_folder_value, entry_link, entry_folde
     selected_link_value.configure(text=entry_link.get())
     selected_folder_value.configure(text=entry_folder.get())
 
-
 def download_video(url, path):
+    if url == "" or path == "":
+        return
     try:
-        video = YouTube(url).streams.get_highest_resolution()
-        if video is not None:
-            video.download(path)
+        video = YouTube(url)
+        st = video.streams.filter(progressive=True, file_extension='mp4')
+        hrs = st.get_highest_resolution()
+        if hrs is not None:
+            hrs.download(output_path=path)
     except Exception as e:
         print(e)
