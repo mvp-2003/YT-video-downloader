@@ -1,4 +1,3 @@
-from turtle import down
 import requests, validators
 from customtkinter import filedialog
 from urllib.parse import urlparse, parse_qs
