@@ -21,7 +21,7 @@ invalid_url_label.place(x=1185, y=125)
 select_button = ctk.CTkButton(app, text="Choose folder", width=80, height=40, command=lambda: first_check(entry_folder, entry_link, invalid_url_label))
 select_button.place(x=1185, y=175)
 
-upload_button = ctk.CTkButton(app, text="Select", width=60, height=45, command= lambda: finalize(selected_link_value, selected_folder_value, entry_link, entry_folder))
+upload_button = ctk.CTkButton(app, text="Select", width=60, height=45, command= lambda: finalize(selected_link_value, selected_folder_value, entry_link, entry_folder, download_button))
 upload_button.place(x=775, y=225)
 
 selected_link = ctk.CTkLabel(app, text="URL: ", font=("Arial", 16))
@@ -38,5 +38,6 @@ selected_folder_value.place(x=375, y=350)
 
 download_button = ctk.CTkButton(app, text="Download", width=60, height=45, command=lambda: download_video(selected_link_value.cget("text"), selected_folder_value.cget("text")))
 download_button.place(x=775, y=400)
+download_button.configure(state='disabled')
 
 app.mainloop()
