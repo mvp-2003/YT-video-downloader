@@ -20,6 +20,9 @@ def valid_url(url):
     
 def first_check(entry_folder, entry_link, invalid_url_label):
     url = entry_link.get()
+    if url == "":
+        invalid_url_label.configure(text="URL not provided")
+        return
     if not valid_url(url):
         invalid_url_label.configure(text="Invalid URL")
         return
