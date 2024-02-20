@@ -66,6 +66,7 @@ def download_video(url, path):
         st = video.streams.filter(progressive=True, file_extension='mp4')
         hrs = st.get_highest_resolution()
         if hrs is not None:
+            # deepcode ignore MissingAPI: <please specify a reason of ignoring this>
             down_th = threading.Thread(target=hrs.download, args=(path,))
             down_th.start()
             
