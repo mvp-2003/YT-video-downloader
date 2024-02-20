@@ -1,3 +1,4 @@
+from turtle import down
 import requests, validators
 from customtkinter import filedialog
 from urllib.parse import urlparse, parse_qs
@@ -39,16 +40,19 @@ def finalize(selected_link_value, selected_folder_value, entry_link, entry_folde
         selected_link_value.configure(text="")
         selected_folder_value.configure(text="Please select a folder", text_color="red")
         selected_link_value.configure(text="Please provide a URL", text_color="red")
+        download_button.configure(state='disabled')
     elif entry_link.get() == "":
         selected_folder_value.configure(text="")
         selected_link_value.configure(text="")
         selected_link_value.configure(text="Please provide a URL", text_color="red")
         selected_folder_value.configure(text=entry_folder.get(), text_color="black")
+        download_button.configure(state='disabled')
     elif entry_folder.get() == "":
         selected_folder_value.configure(text="")
         selected_link_value.configure(text="")
         selected_link_value.configure(text=entry_link.get(), text_color="black")
         selected_folder_value.configure(text="Please select a folder", text_color="red")
+        download_button.configure(state='disabled')
     else:
         selected_link_value.configure(text=entry_link.get(), text_color="black")
         selected_folder_value.configure(text=entry_folder.get(), text_color="black")
