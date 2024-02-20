@@ -1,3 +1,4 @@
+from turtle import down
 import requests, validators
 from customtkinter import filedialog
 from urllib.parse import urlparse, parse_qs
@@ -62,5 +63,6 @@ def download_video(url, path):
         if hrs is not None:
             down_th = threading.Thread(target=hrs.download, args=(path,))
             down_th.start()
+            down_th.join()
     except Exception as e:
         print(e)
