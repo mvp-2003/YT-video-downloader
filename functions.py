@@ -2,6 +2,7 @@ import requests, validators
 from customtkinter import filedialog
 from urllib.parse import urlparse, parse_qs
 from pytube import YouTube
+import threading
 
 def valid_url(url):
     if not validators.url(url):
@@ -59,6 +60,7 @@ def download_video(url, path):
         st = video.streams.filter(progressive=True, file_extension='mp4')
         hrs = st.get_highest_resolution()
         if hrs is not None:
-            hrs.download(output_path=path)
+            down_th = threading.Thread(target=hrs.download, args=(path,))
+            down_th.start()
     except Exception as e:
         print(e)
