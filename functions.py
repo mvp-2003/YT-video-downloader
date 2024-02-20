@@ -68,6 +68,6 @@ def download_video(url, path):
         if hrs is not None:
             down_th = threading.Thread(target=hrs.download, args=(path,))
             down_th.start()
-            down_th.join()
+            
     except Exception as e:
         print(e)
