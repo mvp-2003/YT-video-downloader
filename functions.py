@@ -43,9 +43,11 @@ def finalize(selected_link_value, selected_folder_value, entry_link, entry_folde
         selected_folder_value.configure(text="")
         selected_link_value.configure(text="")
         selected_link_value.configure(text="Please provide a URL", text_color="red")
+        selected_folder_value.configure(text=entry_folder.get(), text_color="black")
     elif entry_folder.get() == "":
         selected_folder_value.configure(text="")
         selected_link_value.configure(text="")
+        selected_link_value.configure(text=entry_link.get(), text_color="black")
         selected_folder_value.configure(text="Please select a folder", text_color="red")
     else:
         selected_link_value.configure(text=entry_link.get(), text_color="black")
