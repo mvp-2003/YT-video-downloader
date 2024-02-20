@@ -15,7 +15,7 @@ entry_folder = ctk.CTkEntry(app, placeholder_text="Choose the folder to download
 entry_folder.place(x=375, y=175)
 entry_folder.configure(state='disabled')
 
-invalid_url_label = ctk.CTkLabel(app, text="", fg_color="gray", font=("Arial", 16))
+invalid_url_label = ctk.CTkLabel(app, text="", text_color="red", font=("Arial", 16))
 invalid_url_label.place(x=1185, y=125)
 
 select_button = ctk.CTkButton(app, text="Choose folder", width=80, height=40, command=lambda: first_check(entry_folder, entry_link, invalid_url_label))
