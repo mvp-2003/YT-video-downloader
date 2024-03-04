@@ -20,7 +20,6 @@ def valid_url(url):
     return True
     
 def first_check(entry_folder, entry_link, invalid_url_label):
-    entry_folder.delete(0, 'end')
     url = entry_link.get()
     if url == "":
         invalid_url_label.configure(text="URL not provided")
@@ -31,10 +30,19 @@ def first_check(entry_folder, entry_link, invalid_url_label):
     invalid_url_label.configure(text="")
     folder = filedialog.askdirectory()
     entry_folder.configure(state='normal')
+    entry_folder.delete(0, 'end')
     entry_folder.insert(0, folder)
     entry_folder.configure(state='disabled')
 
-def finalize(selected_link_value, selected_folder_value, entry_link, entry_folder, download_button):
+def finalize(selected_link_value, selected_folder_value, entry_link, entry_folder, download_button, invalid_url_label):
+    url = entry_link.get()
+    if url == "":
+        invalid_url_label.configure(text="URL not provided")
+        return
+    if not valid_url(url):
+        invalid_url_label.configure(text="Invalid URL")
+        return
+    entry_folder.delete(0, 'end')
     if entry_folder.get() == "" and entry_link.get() == "":
         selected_folder_value.configure(text="")
         selected_link_value.configure(text="")
@@ -56,6 +64,9 @@ def finalize(selected_link_value, selected_folder_value, entry_link, entry_folde
     else:
         selected_link_value.configure(text=entry_link.get(), text_color="black")
         selected_folder_value.configure(text=entry_folder.get(), text_color="black")
+        entry_link.delete(0, 'end')
+        entry_folder.configure(state='normal')
+        entry_folder.delete(0, 'end')
         download_button.configure(state='normal')
 
 def download_video(url, path, final_message_box):
