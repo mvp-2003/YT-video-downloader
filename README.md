@@ -1,4 +1,4 @@
-If you are running from IDEs, then:
+If you are running from IDEs / Power shell / Command Prompt, then:
 - Install the dependencies and packages first mentioned in the ```requirements.txt``` file
 
 ```
@@ -20,4 +20,4 @@ This has not been made into a proper application.
 After it will be made into an executable, you can directly run by double clicking the **.exe** file.
 Improve ideas for the **_UI/UX and other functionalities_** will be appreciated.
 
-**SUGGESTED (for __developers__): Use __Virtual Environment__.**
+**SUGGESTED (for *developers*): Use *Virtual Environment*.**
