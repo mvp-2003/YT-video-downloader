@@ -39,5 +39,5 @@ selected_folder_value.place(x=375, y=350)
 download_button = ctk.CTkButton(app, text="Download", width=60, height=45, command=lambda: download_video(selected_link_value.cget("text"), selected_folder_value.cget("text")))
 download_button.place(x=775, y=400)
 download_button.configure(state='disabled')
-
-app.mainloop()
+if __name__ == "__main__":
+    app.mainloop()
