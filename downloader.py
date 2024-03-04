@@ -40,5 +40,4 @@ download_button = ctk.CTkButton(app, text="Download", width=60, height=45, comma
 download_button.place(x=775, y=400)
 download_button.configure(state='disabled')
 
-if __name__ == "__main__":
-    app.mainloop()
+app.mainloop()
