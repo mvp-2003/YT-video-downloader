@@ -20,6 +20,7 @@ def valid_url(url):
     return True
     
 def first_check(entry_folder, entry_link, invalid_url_label):
+    entry_folder.delete(0, 'end')
     url = entry_link.get()
     if url == "":
         invalid_url_label.configure(text="URL not provided")
@@ -57,7 +58,8 @@ def finalize(selected_link_value, selected_folder_value, entry_link, entry_folde
         selected_folder_value.configure(text=entry_folder.get(), text_color="black")
         download_button.configure(state='normal')
 
-def download_video(url, path):
+def download_video(url, path, final_message_box):
+    final_message_box.configure(text="")
     if url == "" or path == "":
         return
     try:
@@ -68,6 +70,8 @@ def download_video(url, path):
             # deepcode ignore MissingAPI: <please specify a reason of ignoring this>
             down_th = threading.Thread(target=hrs.download, args=(path,))
             down_th.start()
+            final_message_box.configure(text="Download successful", text_color="green")
             
     except Exception as e:
         print(e)
+        final_message_box.configure(text="An error occurred while downloading the video", text_color="red")

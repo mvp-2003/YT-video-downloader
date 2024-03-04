@@ -36,9 +36,12 @@ selected_link_value.place(x=375, y=300)
 selected_folder_value = ctk.CTkLabel(app, text="", fg_color="gray", font=("Arial", 14), height=30, width=800)
 selected_folder_value.place(x=375, y=350)
 
-download_button = ctk.CTkButton(app, text="Download", width=60, height=45, command=lambda: download_video(selected_link_value.cget("text"), selected_folder_value.cget("text")))
+download_button = ctk.CTkButton(app, text="Download", width=60, height=45, command=lambda: download_video(selected_link_value.cget("text"), selected_folder_value.cget("text"), final_message_box))
 download_button.place(x=775, y=400)
 download_button.configure(state='disabled')
+
+final_message_box = ctk.CTkLabel(app, text="", font=("Arial", 16), height=30, width=800)
+final_message_box.place(x=375, y=450)
 
 def on_close(event):
     app.quit()
