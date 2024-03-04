@@ -9,7 +9,7 @@ pip install -r requirements.txt
     ```
     python downloader.py
     ```
-  - In Linux, the same works by running
+  - In Linux, the same works by running (currently **NOT WORKING** on _Linux_)
     ```
     python3 downloader.py
     ```
