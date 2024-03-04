@@ -13,8 +13,7 @@ pip install -r requirements.txt
     ```
     python3 downloader.py
     ```
-
-Currently not in a proper state to run on Linux.
+      Currently not in a proper state to run on Linux.
 
 This has not been made into a proper application.
 After it will be made into an executable, you can directly run by double clicking the **.exe** file.
