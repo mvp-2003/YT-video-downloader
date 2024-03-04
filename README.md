@@ -20,4 +20,4 @@ This has not been made into a proper application.
 After it will be made into an executable, you can directly run by double clicking the **.exe** file.
 Improve ideas for the **_UI/UX and other functionalities_** will be appreciated.
 
-**SUGGESTED (for __developers__): Use __Virtual Environment__.
+**SUGGESTED (for __developers__): Use __Virtual Environment__.**
