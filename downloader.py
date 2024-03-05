@@ -1,8 +1,18 @@
 import customtkinter as ctk
 from functions import *
+import os
+import sys
 
 ctk.set_default_color_theme("green")
 ctk.set_appearance_mode("dark")
+
+def get_icon_path():
+    if getattr(sys, 'frozen', False):
+        # Running as a bundled executable
+        return os.path.join(sys._MEIPASS, "Logo.ico")
+    else:
+        # Running as a script
+        return "Logo.ico"
 
 app = ctk.CTk()
 app.title("YT Video Downloader")
