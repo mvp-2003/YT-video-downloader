@@ -7,6 +7,7 @@ ctk.set_appearance_mode("dark")
 app = ctk.CTk()
 app.title("YT Video Downloader")
 app.geometry("1200x700")
+app.iconbitmap("Logo.ico")
 
 entry_link = ctk.CTkEntry(app, placeholder_text="Paste the URL", width=800, height=40)
 entry_link.place(x=375, y=125)
