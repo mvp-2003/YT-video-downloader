@@ -41,7 +41,7 @@ download_button.place(x=775, y=400)
 download_button.configure(state='disabled')
 
 final_message_box = ctk.CTkLabel(app, text="", font=("Arial", 16), height=30, width=800)
-final_message_box.place(x=375, y=450)
+final_message_box.place(x=400, y=500)
 
 def on_close(event):
     app.quit()

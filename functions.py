@@ -81,7 +81,7 @@ def download_video(url, path, final_message_box):
             # deepcode ignore MissingAPI: <please specify a reason of ignoring this>
             down_th = threading.Thread(target=hrs.download, args=(path,))
             down_th.start()
-            final_message_box.configure(text="Download successful", text_color="green")
+            final_message_box.configure(text="Download successful!", text_color="green", font=("Arial", 24))
             
     except Exception as e:
         print(e)
