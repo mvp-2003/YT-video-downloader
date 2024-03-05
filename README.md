@@ -4,14 +4,14 @@ If you are running from IDEs / Power shell / Command Prompt, then:
 ```
 pip install -r requirements.txt
 ```
-- Then run the ```main.py``` file.
+- Then run the ```downloader.py``` file.
   - In **Windows** , this can be done by running the command
     ```
-    python main.py
+    python downloader.py
     ```
   - In Linux, the same works by running (currently **NOT WORKING** on _Linux_)
     ```
-    python3 main.py
+    python3 downloader.py
     ```
       Currently not in a proper state to run on Linux.
 
