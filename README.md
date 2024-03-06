@@ -1,3 +1,8 @@
+Get the latest development version from GitHub:
+```
+git clone https://github.com/mvp-2003/YT-video-downloader.git
+```
+
 If you are running from IDEs / Power shell / Command Prompt, then:
 - Install the dependencies and packages first mentioned in the ```requirements.txt``` file
 
