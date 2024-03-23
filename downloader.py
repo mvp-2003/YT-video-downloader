@@ -47,7 +47,7 @@ final_message_box.place(x=400, y=500)
 def on_close(event):
     app.quit()
 
-app.bind("<Destroy>", on_close)
+app.protocol("WM_DELETE_WINDOW", on_close)
 
 if __name__ == "__main__":
     app.mainloop()
