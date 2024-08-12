@@ -10,39 +10,39 @@ app.geometry("1200x700")
 app.iconbitmap("Logo.ico")
 
 entry_link = ctk.CTkEntry(app, placeholder_text="Paste the URL", width=800, height=40)
-entry_link.place(x=375, y=125)
+entry_link.place(x=375, y=200)  # Increased y by 75
 
 entry_folder = ctk.CTkEntry(app, placeholder_text="Choose the folder to download", width=800, height=40)
-entry_folder.place(x=375, y=175)
+entry_folder.place(x=375, y=300)  # Increased y by 75
 entry_folder.configure(state='disabled')
 
 invalid_url_label = ctk.CTkLabel(app, text="", text_color="red", font=("Arial", 16))
-invalid_url_label.place(x=1185, y=125)
+invalid_url_label.place(x=1185, y=200)  # Increased y by 75
 
 select_button = ctk.CTkButton(app, text="Choose folder", width=80, height=40, command=lambda: first_check(entry_folder, entry_link, invalid_url_label))
-select_button.place(x=1185, y=175)
+select_button.place(x=1185, y=300)  # Increased y by 75
 
 upload_button = ctk.CTkButton(app, text="Select", width=60, height=45, command= lambda: finalize(selected_link_value, selected_folder_value, entry_link, entry_folder, download_button, invalid_url_label))
-upload_button.place(x=775, y=225)
+upload_button.place(x=775, y=350)  # Increased y by 75
 
 selected_link = ctk.CTkLabel(app, text="URL: ", font=("Arial", 16))
-selected_link.place(x=320, y=300)
+selected_link.place(x=320, y=425)  # Increased y by 75
 
 selected_folder = ctk.CTkLabel(app, text="Folder: ", font=("Arial", 16))
-selected_folder.place(x=320, y=350)
+selected_folder.place(x=320, y=475)  # Increased y by 75
 
 selected_link_value = ctk.CTkLabel(app, text="", fg_color="gray", font=("Arial", 14), height=30, width=800)
-selected_link_value.place(x=375, y=300)
+selected_link_value.place(x=375, y=425)  # Increased y by 75
 
 selected_folder_value = ctk.CTkLabel(app, text="", fg_color="gray", font=("Arial", 14), height=30, width=800)
-selected_folder_value.place(x=375, y=350)
+selected_folder_value.place(x=375, y=475)  # Increased y by 75
 
 download_button = ctk.CTkButton(app, text="Download", width=60, height=45, command=lambda: download_video(selected_link_value.cget("text"), selected_folder_value.cget("text"), final_message_box))
-download_button.place(x=775, y=400)
+download_button.place(x=775, y=525)  # Increased y by 75
 download_button.configure(state='disabled')
 
 final_message_box = ctk.CTkLabel(app, text="", font=("Arial", 16), height=30, width=800)
-final_message_box.place(x=400, y=500)
+final_message_box.place(x=400, y=625)  # Increased y by 75
 
 def on_close(event=None):
     app.destroy()
