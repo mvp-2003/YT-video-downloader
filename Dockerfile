@@ -8,6 +8,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 80
 
-ENV NAME YTVideoDownloader
+ENV NAME=YTVideoDownloader
 
 CMD ["python", "downloader.py"]
