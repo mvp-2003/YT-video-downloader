@@ -1,4 +1,9 @@
-FROM python:alpine
+FROM python:3.12-alpine
+
+RUN apk add --no-cache tcl tk \
+    && apk add --no-cache --virtual .build-deps gcc musl-dev \
+    && pip install --no-cache-dir --upgrade pip \
+    && apk del .build-deps
 
 WORKDIR /app
 
