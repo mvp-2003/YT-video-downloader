@@ -11,6 +11,7 @@ logging.basicConfig(level=logging.INFO)
 lock = threading.Lock()
 
 def valid_url(url):
+    """Validate the provided URL."""
     if not validators.url(url):
         return False
     
@@ -37,6 +38,7 @@ def valid_url(url):
     return True
 
 def first_check(entry_folder, entry_link, invalid_url_label):
+    """Perform the first check on the provided URL and folder."""
     url = entry_link.get()
     if url == "":
         invalid_url_label.configure(text="URL not provided")
@@ -52,6 +54,7 @@ def first_check(entry_folder, entry_link, invalid_url_label):
     entry_folder.configure(state='disabled')
 
 def finalize(selected_link_value, selected_folder_value, entry_link, entry_folder, download_button, invalid_url_label):
+    """Finalize the URL and folder selection."""
     url = entry_link.get()
     if url == "":
         invalid_url_label.configure(text="URL not provided")
@@ -85,6 +88,7 @@ def finalize(selected_link_value, selected_folder_value, entry_link, entry_folde
         download_button.configure(state='normal')
 
 def download_video(url, path, final_message_box):
+    """Download the video from the provided URL to the specified path."""
     final_message_box.configure(text="")
     if url == "" or path == "":
         return
