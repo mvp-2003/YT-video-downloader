@@ -1,6 +1,6 @@
 FROM python:3.12-alpine
 
-RUN apk add --no-cache tcl tk \
+RUN apk add --no-cache tcl tk xvfb \
     && apk add --no-cache --virtual .build-deps gcc musl-dev \
     && pip install --no-cache-dir --upgrade pip \
     && apk del .build-deps
@@ -15,4 +15,4 @@ COPY . /app
 EXPOSE 80
 ENV NAME=YTVideoDownloader
 
-CMD ["python", "downloader.py"]
+CMD ["sh", "-c", "Xvfb :99 -screen 0 1024x768x16 & export DISPLAY=:99 && python downloader.py"]
