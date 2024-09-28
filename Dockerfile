@@ -1,13 +1,13 @@
-FROM python:3.12-slim
+FROM python:alpine
 
 WORKDIR /app
 
-COPY . /app
-
+COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 80
+COPY . /app
 
+EXPOSE 80
 ENV NAME=YTVideoDownloader
 
 CMD ["python", "downloader.py"]
