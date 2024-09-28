@@ -1,8 +1,14 @@
-import requests, validators
+import requests
+import validators
 from customtkinter import filedialog
 from urllib.parse import urlparse, parse_qs
 from pytube import YouTube
 import threading
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
+lock = threading.Lock()
 
 def valid_url(url):
     if not validators.url(url):
@@ -20,12 +26,16 @@ def valid_url(url):
         if 'v' not in query:
             return False
 
-    response = requests.get(url)
-    if response.status_code != 200:
+    try:
+        response = requests.get(url)
+        if response.status_code != 200:
+            return False
+    except requests.RequestException as e:
+        logging.error(f"Network error: {e}")
         return False
 
     return True
-    
+
 def first_check(entry_folder, entry_link, invalid_url_label):
     url = entry_link.get()
     if url == "":
@@ -49,28 +59,26 @@ def finalize(selected_link_value, selected_folder_value, entry_link, entry_folde
     if not valid_url(url):
         invalid_url_label.configure(text="Invalid URL")
         return
+    
     entry_folder.delete(0, 'end')
-    if entry_folder.get() == "" and entry_link.get() == "":
-        selected_folder_value.configure(text="")
-        selected_link_value.configure(text="")
+    folder = entry_folder.get()
+    link = entry_link.get()
+
+    if not folder and not link:
         selected_folder_value.configure(text="Please select a folder", text_color="red")
         selected_link_value.configure(text="Please provide a URL", text_color="red")
         download_button.configure(state='disabled')
-    elif entry_link.get() == "":
-        selected_folder_value.configure(text="")
-        selected_link_value.configure(text="")
+    elif not link:
         selected_link_value.configure(text="Please provide a URL", text_color="red")
-        selected_folder_value.configure(text=entry_folder.get(), text_color="black")
+        selected_folder_value.configure(text=folder, text_color="black")
         download_button.configure(state='disabled')
-    elif entry_folder.get() == "":
-        selected_folder_value.configure(text="")
-        selected_link_value.configure(text="")
-        selected_link_value.configure(text=entry_link.get(), text_color="black")
+    elif not folder:
         selected_folder_value.configure(text="Please select a folder", text_color="red")
+        selected_link_value.configure(text=link, text_color="black")
         download_button.configure(state='disabled')
     else:
-        selected_link_value.configure(text=entry_link.get(), text_color="black")
-        selected_folder_value.configure(text=entry_folder.get(), text_color="black")
+        selected_link_value.configure(text=link, text_color="black")
+        selected_folder_value.configure(text=folder, text_color="black")
         entry_link.delete(0, 'end')
         entry_folder.configure(state='normal')
         entry_folder.delete(0, 'end')
@@ -85,11 +93,14 @@ def download_video(url, path, final_message_box):
         st = video.streams.filter(progressive=True, file_extension='mp4')
         hrs = st.get_highest_resolution()
         if hrs is not None:
-            # deepcode ignore MissingAPI: <please specify a reason of ignoring this>
-            down_th = threading.Thread(target=hrs.download, args=(path,))
+            def download():
+                with lock:
+                    hrs.download(path)
+                final_message_box.configure(text="Download successful!", text_color="green", font=("Arial", 24))
+            
+            down_th = threading.Thread(target=download)
             down_th.start()
-            final_message_box.configure(text="Download successful!", text_color="green", font=("Arial", 24))
             
     except Exception as e:
-        print(e)
+        logging.error(f"Error downloading video: {e}")
         final_message_box.configure(text="An error occurred while downloading the video", text_color="red")
